@@ -60,9 +60,10 @@ def main(url: str, output: str, debug: bool = False, quiet: bool = False, skip_d
             downloader = WebsiteDownloader(quiet=quiet)
             downloaded_dir = downloader.download(url, downloads_dir)
         else:
-            if not downloads_dir.exists():
-                raise RuntimeError(f"Cannot skip download: {downloads_dir} does not exist")
-            downloaded_dir = downloads_dir / "web"
+            web_dir = downloads_dir / "web"
+            if not web_dir.exists():
+                raise RuntimeError(f"Cannot skip download: {web_dir} does not exist")
+            downloaded_dir = web_dir
 
         if download_only:
             if not quiet:

@@ -56,7 +56,7 @@ class HTMLPreprocessor:
         """Normalize a URL by removing trailing slashes and index.html."""
         url = url.rstrip('/')
         if url.endswith('index.html'):
-            url = url[:-10]
+            url = url[:-10].rstrip('/')
         return url
 
     def _fix_resource_paths(self, soup: BeautifulSoup, file_path: str) -> None:
@@ -415,9 +415,14 @@ class HTMLPreprocessor:
                                 elements_found["body"] = True
 
                             if main_content:
-                                # Remove unwanted elements
-                                for element in main_content.find_all(['script', 'style', 'nav', 'header', 'footer']):
-                                    element.decompose()
+                                # Only remove unwanted elements if we found a main content area
+                                if elements_found["main"] or elements_found["article"] or elements_found["main_div"] or elements_found["content_div"]:
+                                    for element in main_content.find_all(['script', 'style', 'nav']):
+                                        element.decompose()
+                                else:
+                                    # If we're using the body, preserve header and footer but remove other unwanted elements
+                                    for element in main_content.find_all(['script', 'style', 'nav']):
+                                        element.decompose()
 
                                 # Add a section wrapper with file info
                                 section = soup.new_tag('section')
@@ -490,9 +495,14 @@ class HTMLPreprocessor:
                                 elements_found["body"] = True
 
                             if main_content:
-                                # Remove unwanted elements
-                                for element in main_content.find_all(['script', 'style', 'nav', 'header', 'footer']):
-                                    element.decompose()
+                                # Only remove unwanted elements if we found a main content area
+                                if elements_found["main"] or elements_found["article"] or elements_found["main_div"] or elements_found["content_div"]:
+                                    for element in main_content.find_all(['script', 'style', 'nav']):
+                                        element.decompose()
+                                else:
+                                    # If we're using the body, preserve header and footer but remove other unwanted elements
+                                    for element in main_content.find_all(['script', 'style', 'nav']):
+                                        element.decompose()
 
                                 # Add a section wrapper with file info
                                 section = soup.new_tag('section')

@@ -2,4 +2,7 @@ downloads/
 output/
 .notes/
 __pycache__/
+.pytest_cache/
 .cursorrules
+.coverage
+output.pdf

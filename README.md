@@ -108,6 +108,37 @@ Set via environment variables or `.env`:
 - `DOWNLOAD_DIR`: Temporary files location
 - `OUTPUT_DIR`: PDF output location
 
+## 🤝 Testing
+
+Run tests with pytest:
+
+```bash
+# Run all tests (via python)
+python -m pytest tests/ -v
+
+# Run all tests (directly)
+pytest tests/ -v
+
+# Run tests with coverage report
+pytest tests/ --cov=web2llm --cov-report=term-missing
+
+# Run specific test file
+pytest tests/test_preprocessor.py -v
+
+# Run specific test function
+pytest tests/test_preprocessor.py::test_normalize_url -v
+```
+
+Tests cover:
+
+- CLI functionality
+- Website downloading
+- HTML preprocessing
+- SVG handling
+- Tabbed content processing
+- Document merging
+- PDF conversion
+
 ## 🤝 Contributing
 
 Contributions welcome! Please feel free to submit a Pull Request.
