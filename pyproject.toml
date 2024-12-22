@@ -1,0 +1,23 @@
+[project]
+name = "web2llm"
+version = "0.1.0"
+description = "A Python tool that prepares online documentation for LLM consumption by downloading websites and converting them into standardized formats"
+authors = []
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+
+dependencies = [
+    "pdfkit>=1.0.0",
+    "beautifulsoup4>=4.12.2",
+    "click>=8.1.7",
+    "pathlib>=1.0.1",
+    "python-dotenv>=1.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.ruff]
+line-length = 100

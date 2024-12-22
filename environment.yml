@@ -1,0 +1,15 @@
+name: web2llm
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - pip
+  - beautifulsoup4>=4.12.2
+  - click>=8.1.7
+  - python-dotenv>=1.0.0
+  - httrack
+  - wkhtmltopdf
+  - pip:
+      - pathlib>=1.0.1
+      - pdfkit>=1.0.0
